@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "67222463443",
+    "firebase_url": "https://crud-flutter-mytask.firebaseio.com",
+    "project_id": "crud-flutter-mytask",
+    "storage_bucket": "crud-flutter-mytask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67222463443:android:0d2965bf76871c24",
+        "android_client_info": {
+          "package_name": "dev.nullpointer.fluttercrudfirebasemytask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67222463443-jsot1cq2b6ggl3m1bbuupiel03dtl8gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.nullpointer.fluttercrudfirebasemytask",
+            "certificate_hash": "36dc837984b053d238243d5f71c1c1b94b0b1d44"
+          }
+        },
+        {
+          "client_id": "67222463443-idi3b6i7m79ms2mg8qugl1l1as4ufrm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYckNqoY_R0jjXDDDF5UvbMpatMmVxqNo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67222463443-idi3b6i7m79ms2mg8qugl1l1as4ufrm9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
