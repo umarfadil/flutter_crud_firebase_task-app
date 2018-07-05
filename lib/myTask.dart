@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_crud_firebase_mytask/addTask.dart';
 import 'package:flutter_crud_firebase_mytask/main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +19,7 @@ class _MyTaskState extends State<MyTask> {
   void _signOut() {
     AlertDialog alertDialog = new AlertDialog(
       content: Container(
-        height: 250.0,
+        height: 225.0,
         child: Column(
           children: <Widget>[
             ClipOval(
@@ -38,9 +39,8 @@ class _MyTaskState extends State<MyTask> {
                 InkWell(
                   onTap: () {
                     widget.googleSignIn.signOut();
-                    Navigator.of(context).push(
-                      new MaterialPageRoute(builder: (BuildContext context) => new MyHomePage())
-                    );
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new MyHomePage()));
                   },
                   child: Column(
                     children: <Widget>[
@@ -62,7 +62,6 @@ class _MyTaskState extends State<MyTask> {
                     ],
                   ),
                 ),
-
               ],
             )
           ],
@@ -75,6 +74,25 @@ class _MyTaskState extends State<MyTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: new FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new AddTask(email: widget.firebaseUser.email,)));
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.amber,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: new BottomAppBar(
+        elevation: 20.0,
+        color: Colors.blue,
+        child: ButtonBar(
+          children: <Widget>[],
+        ),
+      ),
       body: Container(
         height: 170.0,
         width: double.infinity,
