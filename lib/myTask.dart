@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_crud_firebase_mytask/addTask.dart';
+import 'package:flutter_crud_firebase_mytask/editTask.dart';
 import 'package:flutter_crud_firebase_mytask/main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -211,39 +212,58 @@ class TaskList extends StatelessWidget {
 
         String title = document[i].data['title'].toString();
         String notes = document[i].data['notes'].toString();
-        String dueDate = document[i].data['dueDate'].toString();
+        DateTime _date = document[i].data['dueDate'];
+        String dueDate = "${_date.day}/${_date.month}/${_date.year}";
 
         return Padding(
           padding: const EdgeInsets.only(left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text(title, style: new TextStyle(fontSize: 20.0, letterSpacing: 1.0),),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(title, style: new TextStyle(fontSize: 20.0, letterSpacing: 1.0),),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16.0),
+                            child: Icon(Icons.date_range, color: Colors.blue,),
+                          ),
+                          Text(dueDate, style: new TextStyle(fontSize: 18.0,)),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16.0),
+                            child: Icon(Icons.note, color: Colors.blue,),
+                          ),
+                          Expanded(child: Text(notes, style: new TextStyle(fontSize: 18.0,))),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Icon(Icons.date_range, color: Colors.blue,),
-                    ),
-                    Text(dueDate, style: new TextStyle(fontSize: 18.0,)),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Icon(Icons.note, color: Colors.blue,),
-                    ),
-                    Expanded(child: Text(notes, style: new TextStyle(fontSize: 18.0,))),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              new IconButton(
+                  icon: Icon(Icons.edit, color: Colors.blue,),
+                  onPressed: (){
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new EditTask(
+                          title: title,
+                          notes: notes,
+                          dueDate: document[i].data['dueDate'],
+                          index: document[i].reference,
+                        )));
+                  })
+            ],
           ),
         );
       },
