@@ -79,7 +79,9 @@ class _MyTaskState extends State<MyTask> {
         child: new FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) => new AddTask(email: widget.firebaseUser.email,)));
+                builder: (BuildContext context) => new AddTask(
+                      email: widget.firebaseUser.email,
+                    )));
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.amber,
@@ -93,74 +95,158 @@ class _MyTaskState extends State<MyTask> {
           children: <Widget>[],
         ),
       ),
-      body: Container(
-        height: 170.0,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            image: new DecorationImage(
-                image: new AssetImage("images/header.jpg"), fit: BoxFit.cover),
-            boxShadow: [new BoxShadow(color: Colors.black, blurRadius: 8.0)]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 60.0,
-                    height: 60.0,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image:
-                                new NetworkImage(widget.firebaseUser.photoUrl),
-                            fit: BoxFit.cover)),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 18.0),
-                      child: new Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          new Text(
-                            "Welcome",
-                            style: new TextStyle(
-                                fontSize: 18.0, color: Colors.white),
-                          ),
-                          new Text(
-                            widget.firebaseUser.displayName,
-                            style: new TextStyle(
-                                fontSize: 24.0, color: Colors.white),
-                          ),
-                        ],
-                      ),
+      body: Stack(
+        children: <Widget>[
+          //untuk menampilkan data
+          Padding(
+            padding: const EdgeInsets.only(top: 160.0),
+            child: StreamBuilder(
+              stream: Firestore.instance
+                  .collection("task")
+                  .where("email", isEqualTo: widget.firebaseUser.email)
+                  .snapshots(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData)
+                  return new Container(
+                    child: Center(
+                      child: CircularProgressIndicator(),
                     ),
-                  ),
-                  new IconButton(
-                      icon: Icon(
-                        Icons.exit_to_app,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                      onPressed: () {
-                        _signOut();
-                      })
-                ],
-              ),
+                  );
+
+                return new TaskList(
+                  document: snapshot.data.documents,
+                );
+              },
             ),
-            new Text(
-              "My Task",
-              style: new TextStyle(
-                  color: Colors.white,
-                  fontSize: 30.0,
-                  letterSpacing: 2.0,
-                  fontFamily: "Pacifico"),
-            )
-          ],
-        ),
+          ),
+
+          Container(
+            height: 170.0,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: new DecorationImage(
+                    image: new AssetImage("images/header.jpg"),
+                    fit: BoxFit.cover),
+                boxShadow: [
+                  new BoxShadow(color: Colors.black, blurRadius: 8.0)
+                ]),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 60.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: new NetworkImage(
+                                    widget.firebaseUser.photoUrl),
+                                fit: BoxFit.cover)),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 18.0),
+                          child: new Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              new Text(
+                                "Welcome",
+                                style: new TextStyle(
+                                    fontSize: 18.0, color: Colors.white),
+                              ),
+                              new Text(
+                                widget.firebaseUser.displayName,
+                                style: new TextStyle(
+                                    fontSize: 24.0, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      new IconButton(
+                          icon: Icon(
+                            Icons.exit_to_app,
+                            color: Colors.white,
+                            size: 30.0,
+                          ),
+                          onPressed: () {
+                            _signOut();
+                          })
+                    ],
+                  ),
+                ),
+                new Text(
+                  "My Task",
+                  style: new TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                      letterSpacing: 2.0,
+                      fontFamily: "Pacifico"),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class TaskList extends StatelessWidget {
+  TaskList({this.document});
+
+  final List<DocumentSnapshot> document;
+
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+      itemCount: document.length,
+      itemBuilder: (BuildContext context, int i) {
+
+        String title = document[i].data['title'].toString();
+        String notes = document[i].data['notes'].toString();
+        String dueDate = document[i].data['dueDate'].toString();
+
+        return Padding(
+          padding: const EdgeInsets.only(left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(title, style: new TextStyle(fontSize: 20.0, letterSpacing: 1.0),),
+                ),
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.date_range, color: Colors.blue,),
+                    ),
+                    Text(dueDate, style: new TextStyle(fontSize: 18.0,)),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.note, color: Colors.blue,),
+                    ),
+                    Expanded(child: Text(notes, style: new TextStyle(fontSize: 18.0,))),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
