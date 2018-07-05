@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="724d24ec-b5e1-4201-b4ff-8e8ab374dd15" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/editTask.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/addTask.dart" afterPath="$PROJECT_DIR$/lib/addTask.dart" />
       <change beforePath="$PROJECT_DIR$/lib/myTask.dart" afterPath="$PROJECT_DIR$/lib/myTask.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -35,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myTask.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="myTask.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/myTask.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="204" column="31" lean-forward="false" selection-start-line="204" selection-start-column="31" selection-end-line="204" selection-end-column="31" />
+            <state relative-caret-position="343">
+              <caret line="225" column="59" lean-forward="false" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#662#2381#0" expanded="false" />
-                <element signature="e#2432#6935#0" expanded="false" />
+                <element signature="e#2432#6961#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editTask.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editTask.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/editTask.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="411">
@@ -109,8 +107,8 @@
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/addTask.dart" />
-        <option value="$PROJECT_DIR$/lib/myTask.dart" />
         <option value="$PROJECT_DIR$/lib/editTask.dart" />
+        <option value="$PROJECT_DIR$/lib/myTask.dart" />
       </list>
     </option>
   </component>
@@ -306,7 +304,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30949107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -356,7 +354,7 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#662#2381#0" expanded="false" />
-            <element signature="e#2432#6935#0" expanded="false" />
+            <element signature="e#2432#6961#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -416,24 +414,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/myTask.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="204" column="31" lean-forward="false" selection-start-line="204" selection-start-column="31" selection-end-line="204" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#662#2381#0" expanded="false" />
-            <element signature="e#2432#6935#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/editTask.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/myTask.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="225" column="59" lean-forward="false" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#662#2381#0" expanded="false" />
+            <element signature="e#2432#6961#0" expanded="false" />
           </folding>
         </state>
       </provider>
